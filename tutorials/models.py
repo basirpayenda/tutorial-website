@@ -35,6 +35,19 @@ class SubCategory(models.Model):
     class Meta:
         verbose_name_plural = 'Sub categories'
 
+class SubSubCategory(models.Model):
+    subsub_cat_title = models.CharField(max_length=150)
+    subsub_cat_parent = models.ForeignKey(SubCategory, on_delete = models.CASCADE)
+    subsub_cat_slug = models.SlugField(unique=True)
+
+    def save(self, *args, **kwargs):
+        self.subsub_cat_slug = slugify(self.subsub_cat_title)
+        super(SubSubCategory, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.subsub_cat_title
+
+
 class Tutorial(models.Model):
     tutorial_title = models.CharField(max_length=255)
     tutorial_parent = models.ForeignKey(SubCategory, on_delete = models.SET_NULL, null=True)
@@ -52,4 +65,4 @@ class Tutorial(models.Model):
         self.tutorial_slug = slugify(self.tutorial_title)
         super(Tutorial, self).save(*args, **kwargs)
 
-    
+

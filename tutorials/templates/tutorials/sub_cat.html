@@ -11,15 +11,16 @@
 
 <div class="row">
     <div class="col-md-3">
-        {{ request.path }}
+
+
+
         <div class="list-group">
             {% for sub_cat in sub_cats %}
-                <a href="{% url 'tutorials:tutorials' sub_cat.sub_cat_parent.cat_slug sub_cat.sub_cat_slug %}" class="list-group-item list-group-item-action">
+                <a href="{% url 'tutorials:tutorials' sub_cat.sub_cat_parent.cat_slug sub_cat.sub_cat_slug %}" class="list-group-item list-group-item-action  {% if reuqest.path == sub_cat.get_active_url %} active {% endif %}">
                         {{ sub_cat.sub_cat_title }}</a>
             {% endfor %}
         </div>
     </div>
-    {% if request.path == 'python/python-introduction' %} active {% endif %}
     <div class="col-md-9">
         <h2>Learn Python</h2>
         <p>
