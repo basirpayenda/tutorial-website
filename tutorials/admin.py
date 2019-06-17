@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, SubCategory, Tutorial
+from .models import Category, SubCategory, SubSubCategory, Tutorial
 
 class CategoryAdmin(admin.ModelAdmin):
     fields = [
@@ -28,9 +28,16 @@ class TutorialAdmin(admin.ModelAdmin):
         'tutorial_thumbnail',
     ]
 
+class SubSubCategoryAdmin(admin.ModelAdmin):
+    fields = [
+        'subsub_cat_title',
+        'subsub_cat_parent'
+    ]
+
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(SubCategory, SubCategoryAdmin)
 admin.site.register(Tutorial, TutorialAdmin)
+admin.site.register(SubSubCategory, SubSubCategoryAdmin)
 
 

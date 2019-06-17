@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Latest compiled aand minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
     {% block head %} 
 
     {% endblock head %}
@@ -30,8 +35,42 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-{% block body %}
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
 
+for (i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+
+        if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+        } else {
+            dropdownContent.style.display = "block";
+        }
+    });
+}
+
+let sub_cat = document.getElementsByClassName('dropd-links');
+
+for (i = 0 ; i < sub_cat.length; i++){
+  if (sub_cat[i].classList.contains('active-link')){
+    x = sub_cat[i]
+    elem = x.parentElement.previousElementSibling 
+    elem.classList.toggle('active-link');
+    elem.click()
+  }
+}
+
+
+
+
+
+</script>
+
+{% block body %}
 {% endblock body %}
 
 </body>

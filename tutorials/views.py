@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Category, SubCategory, Tutorial
+from .models import Category, SubCategory, SubSubCategory,Tutorial
 
 
 
@@ -8,24 +8,24 @@ def home(request):
 
 
 def sub_cat(request, category):
-    categories = Category.objects.all()
     sub_cats = SubCategory.objects.filter(sub_cat_parent__cat_slug=category)
+    # subsub_cats = SubSubCategory.objects.filter(subsub_cat_parent__sub_cat_parent__cat_slug = category)
 
     context = {
-        'sub_cats': sub_cats, 
-        'categories': categories
+        'sub_cats': sub_cats,
+        # 'subsub_cats': subsub_cats,
     }
-    return render(request, 'tutorials/sub_cat.html', context )
-
-def tutorials(request, category ,sub_cat):
-    categories = Category.objects.all()
-    sub_cats = SubCategory.objects.filter(sub_cat_parent__cat_slug=category)
-    tutorials = Tutorial.objects.filter(tutorial_parent__sub_cat_slug = sub_cat)
+    return render(request, 'tutorials/sub_cat.html', context)
     
+
+def tutorials(request, category, sub_category, tutorial):
+    sub_cats = SubCategory.objects.filter(sub_cat_parent__cat_slug = category)
+    tutorials = Tutorial.objects.filter(tutorial_slug = tutorial)
+
     context = {
-        'tutorials': tutorials,
-        'sub_cats': sub_cats, 
-        'categories': categories
+        'sub_cats': sub_cats,
+        'tutorials':tutorials,
     }
+
     return render(request, 'tutorials/tutorials.html', context)
 

@@ -1,0 +1,95 @@
+  body {
+    font-family: 'Poppins';
+  }
+  
+  *{
+    box-sizing: border-box;
+    outline: none;
+  }
+
+  /* Fixed sidenav, full height */
+  .sidenav {
+      height: 90%;
+      width: 200px;
+      position: absolute;
+      z-index: 1;
+      top: 0 !important;
+      width: 90%;
+      overflow-x: hidden;
+      border: 1px solid #ccc;
+      margin-left: -1px;
+  
+  }
+  
+  /* Style the sidenav links and the dropdown button */
+  .sidenav a, .dropdown-btn {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 16px;
+      color: #818181;
+      display: block;
+      border: none;
+      background: none;
+      border: 1px solid #ccc;
+      margin-top: -1px;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      outline: none;
+      line-height: 24px;
+      padding: 12px 20px;    
+      border-right:none ;
+      border-left: none;
+      outline: none;
+  }
+  
+  /* On mouse-over */
+  .sidenav a:hover, .dropdown-btn:hover {
+      background-color: #f6f6f6;
+      outline: none;
+  }
+  
+  /* Main content */
+  .main {
+    margin-left: 200px; /* Same as the width of the sidenav */
+    font-size: 20px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+  }
+  
+  .active-link{
+    background-color: #f8f8f8 !important;
+    color: #444 !important; 
+    outline: none !important;
+  }
+  
+  /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+  .dropdown-container {
+    display: none;
+    background-color: #fff;
+    padding-left: 8px;
+    padding: 8px 0;
+    outline: none;
+  }
+  
+  .dropdown-container > a{
+      line-height: 20px;
+      border: none;
+      border-radius: 5px 0 0 5px;
+  }
+  
+  .dropdown-container > a:hover{
+      color: #000;
+  }
+  
+  /* Optional: Style the caret down icon */
+  .fa-caret-down {
+    float: right;
+    padding-right: 8px;
+  }
+  
+  /* Some media queries for responsiveness */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+

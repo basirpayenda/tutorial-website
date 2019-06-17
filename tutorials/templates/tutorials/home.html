@@ -18,7 +18,7 @@ a:hover{
         <div class="card" style="padding: 0;">
             <img class="card-img-top w-100 border" src="{{ category.cat_image.url }}" alt="{{ category.cat_image.url }}">
             <div class="card-body">
-                <a href="{% url 'tutorials:sub_cat' category.cat_slug %}"><h2>{{ category.cat_title }}</h2></a> 
+                <a href="{% url 'tutorials:sub_cats' category.cat_slug %}"><h2>{{ category.cat_title }}</h2></a> 
                 <p class="text-secondary">{{ category.cat_overview }}</h2>
             </div>
         </div>

@@ -50,7 +50,7 @@ class SubSubCategory(models.Model):
 
 class Tutorial(models.Model):
     tutorial_title = models.CharField(max_length=255)
-    tutorial_parent = models.ForeignKey(SubCategory, on_delete = models.SET_NULL, null=True)
+    tutorial_parent = models.ForeignKey(SubSubCategory, on_delete = models.SET_NULL, null=True)
     tutorial_author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     tutorial_timestamp = models.DateTimeField(auto_now_add=True)
     tutorial_views = models.PositiveIntegerField(default=1)

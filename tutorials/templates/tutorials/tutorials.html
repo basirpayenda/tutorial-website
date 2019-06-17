@@ -3,37 +3,50 @@
 
 <title></title>
 
+<style>
+
+.working{
+    background-color: #f00;
+}
+
+</style>
+
 {% endblock head %}
 
 
 {% block container %}
-    <br>
-    <div class="row">
-        <div class="col-md-3">
-            <div class="list-group">
-                <div class="list-group">
-                    {% for sub_cat in sub_cats %}
-                        {% url 'tutorials:tutorials' sub_cat.sub_cat_parent.cat_slug sub_cat.sub_cat_slug as sub_cat_url %}
-                        <a href="{{ sub_cat_url }}" 
-                        class="list-group-item list-group-item-action {% if request.path == sub_cat_url %} active {% endif %}">
-                        {{ sub_cat.sub_cat_title }}</a>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
+<br>
 
-        <div class="col-md-9">
-            {% for tutorial in tutorials %}
-                <div class="card" style="padding: 0;">
-                    <div class="card-body">
-                        <h2>{{ tutorial.tutorial_title }}</h2>
-                        <p class="text-secondary mb-3">{{ tutorial.tutorial_overview }}</h2>
-                        <p>{{ tutorial.tutorial_content|linebreaks }}</p>
-        
+<div class="row">
+    <div class="col-md-3">
+    <div class="sidenav">
+            {% for sub_cat in sub_cats %}
+                    <button class="dropdown-btn"> {{ sub_cat.sub_cat_title }} 
+                            <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-container">
+                            {% for subsub_cat in sub_cat.subsubcategory_set.all %}
+                                {% url 'tutorials:tutorials' subsub_cat.subsub_cat_parent.sub_cat_parent.cat_slug subsub_cat.subsub_cat_parent.sub_cat_slug subsub_cat.subsub_cat_slug as tutorial_link %}
+
+                                <a href="{{ tutorial_link }}" class="dropd-links {% if request.path == tutorial_link %}active-link{% endif %}" >{{ subsub_cat.subsub_cat_title }}</a>
+                            {% endfor %}
                     </div>
-                </div>
             {% endfor %}
-        </div>
     </div>
+    </div>  
+
+    <div class="col-md-9 border p-4 mb-5">
+        {% for tut in tutorials %}
+            <h2>{{ tut.tutorial_title }}</h2>
+            <p>{{ tut.tutorial_content }}</p>
+        {% endfor %}
+
+    </div>
+</div>
+
+
+
+
+
 {% endblock container %}
 
