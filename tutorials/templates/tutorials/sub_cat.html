@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block head %}
+
+<title></title>
+
+{% endblock head %}
+
+
+{% block container %}
+<br>
+
+<div class="row">
+    <div class="col-md-3">
+        {{ request.path }}
+        <div class="list-group">
+            {% for sub_cat in sub_cats %}
+                <a href="{% url 'tutorials:tutorials' sub_cat.sub_cat_parent.cat_slug sub_cat.sub_cat_slug %}" class="list-group-item list-group-item-action">
+                        {{ sub_cat.sub_cat_title }}</a>
+            {% endfor %}
+        </div>
+    </div>
+    {% if request.path == 'python/python-introduction' %} active {% endif %}
+    <div class="col-md-9">
+        <h2>Learn Python</h2>
+        <p>
+                Authoritatively disintermediate 24/365 e-markets before proactive channels. Compellingly pontificate flexible imperatives and vertical users. Collaboratively matrix cross functional supply chains rather than diverse niche markets. Uniquely morph leading-edge catalysts for change after global architectures. Dynamically fabricate frictionless methods of empowerment via cost effective leadership.
+
+                Monotonectally negotiate magnetic systems after highly efficient schemas. Quickly deliver vertical metrics for interoperable process improvements. Efficiently cultivate client-centric synergy via state.
+        </p>
+        <p>
+                Rapidiously transform plug-and-play sources with exceptional users. Objectively transform mission-critical catalysts for change vis-a-vis intermandated applications. Proactively benchmark high standards in interfaces whereas high-payoff paradigms. Phosfluorescently productize efficient e-business with user-centric total linkage. Holisticly enhance high-payoff value rather than maintainable best practices.
+
+                Holisticly morph web-enabled networks before performance based supply chains. Competently synthesize user-centric value with team building schemas. Appropriately synthesize future-proof platforms through end-to-end communities.
+        </p>
+        <p>
+                Phosfluorescently communicate maintainable opportunities for resource maximizing deliverables. Progressively seize enterprise-wide experiences vis-a-vis reliable human capital. Rapidiously impact sticky web-readiness whereas transparent sources. Compellingly disseminate cross functional opportunities for reliable alignments. Appropriately empower user friendly data via parallel deliverables.
+
+                Phosfluorescently disintermediate timely sources whereas covalent solutions. Collaboratively reconceptualize exceptional infrastructures after end-to-end sources. Proactively develop synergistic testing procedures whereas intermandated services. Enthusiastically actualize mission-critical leadership skills.
+        </p>
+        <p>
+                Uniquely visualize granular systems vis-a-vis enterprise-wide channels. Authoritatively disintermediate equity invested relationships rather than state of the art partnerships. Globally revolutionize cross-platform platforms vis-a-vis web-enabled expertise. Intrinsicly grow progressive niches with optimal relationships. Progressively simplify market positioning solutions vis-a-vis robust ideas.
+
+                Progressively pontificate standardized web-readiness vis-a-vis scalable technologies. Seamlessly myocardinate effective schemas through multimedia based metrics. Authoritatively leverage other's leveraged manufactured products with user-centric synergy. Dramatically.
+        </p>
+        <p>
+                Quickly impact B2C action items before impactful interfaces. Dynamically target empowered meta-services through granular data. Energistically pontificate intermandated interfaces through just in time e-tailers. Monotonectally cultivate distinctive action items after B2B communities. Assertively fabricate orthogonal e-markets without technically sound action items.
+
+                Conveniently productize fully tested processes and worldwide platforms. Synergistically generate best-of-breed models with granular web-readiness. Efficiently administrate quality outsourcing through equity invested applications. Intrinsicly target.
+        </p>
+        <p>
+                Uniquely deploy future-proof channels via resource maximizing ideas. Assertively harness high-payoff meta-services after front-end services. Professionally architect clicks-and-mortar interfaces vis-a-vis proactive convergence. Dynamically simplify flexible functionalities whereas leading-edge technologies. Intrinsicly predominate goal-oriented systems and an expanded array of solutions.
+
+                Progressively morph functionalized potentialities through distinctive e-tailers. Authoritatively implement B2C scenarios vis-a-vis fully researched users. Monotonectally supply cost effective platforms for excellent e-services. Proactively matrix multifunctional communities.
+        </p>
+    </div>
+
+</div>
+
+
+
+
+
+{% endblock container %}
+

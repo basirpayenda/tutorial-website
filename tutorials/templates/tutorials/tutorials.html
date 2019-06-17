@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block head %}
+
+<title></title>
+
+{% endblock head %}
+
+
+{% block container %}
+    <br>
+    <div class="row">
+        <div class="col-md-3">
+            {{ request.path }}
+        
+        <div class="list-group">
+            {% for sub_cat in sub_cats %}
+                <a href="{% url 'tutorials:tutorials' sub_cat.sub_cat_parent.cat_slug sub_cat.sub_cat_slug %}" class="list-group-item list-group-item-action {% if request.path == f'/{sub_cat.sub_cat_parent.cat_slug}/{sub_cat.sub_cat_slug/}' %} active {% endif %}">
+                {{ sub_cat.sub_cat_title }}</a>
+            {% endfor %}
+        </div>
+        </div>
+
+        <div class="col-md-9">
+            {% for tutorial in tutorials %}
+                <div class="card" style="padding: 0;">
+                    <div class="card-body">
+                        <h2>{{ tutorial.tutorial_title }}</h2>
+                        <p class="text-secondary mb-3">{{ tutorial.tutorial_overview }}</h2>
+                        <p>{{ tutorial.tutorial_content|linebreaks }}</p>
+        
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock container %}
+
